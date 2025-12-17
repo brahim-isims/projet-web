@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- Logique du Formulaire de Commande ---
     var orderForm = document.getElementById("orderFormElement");
     if (orderForm) {
         var selected = JSON.parse(localStorage.getItem('selectedPerfume'));
@@ -14,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
             envoyerCommandeAJAX(); 
         }); 
     }
-
-    // --- Gestion Globale des Clics ---
     document.body.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('order-btn')) {
             var data = {
@@ -31,14 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-/**
- * Fonction AJAX (Basée sur le Chapitre VI du cours)
- */
 function envoyerCommandeAJAX() {
     var xhr = null; //
-    
-    // 1. Instanciation de l'objet (Gestion de l'incompatibilité)
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest(); //
     } else if (window.ActiveXObject) {
@@ -47,37 +38,24 @@ function envoyerCommandeAJAX() {
         alert("Votre navigateur n'est pas compatible avec AJAX..."); //
         return;
     }
-
-    // Récupération des données
     var clientName = document.getElementById("name").value;
     var perfumeName = document.getElementById("perfume").value;
     var quantity = document.getElementById("quantity").value;
-
-    // 2. Associer une fonction au traitement (onreadystatechange)
     xhr.onreadystatechange = function () {
-        // readyState 4: données complètement accessibles
-        // status 200: requête exécutée avec succès
+
         if (xhr.readyState === 4 && xhr.status === 200) { //
-            // Traitement via responseText
             console.log("Réponse reçue : " + xhr.responseText); 
-            generateReceipt(); // Mise à jour dynamique de la page
+            generateReceipt(); 
         }
     };
-
-    // 3. Initialiser la requête (POST)
-    xhr.open("POST", "traiter_commande.php", true); // Mode true pour asynchrone
-
-    // 4. Définition de l'entête HTTP (Spécifiquement pour POST)
+    xhr.open("POST", "traiter_commande.php", true); 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //
-
-    // 5. Effectuer la requête avec les paramètres
     var params = "nom=" + encodeURIComponent(clientName) + 
                  "&parfum=" + encodeURIComponent(perfumeName) + 
                  "&qte=" + encodeURIComponent(quantity); //
     
-    xhr.send(params); //
+    xhr.send(params); 
 }
-
 function generateReceipt() { 
     var name = document.getElementById("name").value; 
     var perfume = document.getElementById("perfume").value;
