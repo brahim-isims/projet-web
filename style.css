@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  display: flex;
+  background: url('background.jpg') no-repeat center center fixed, #050505;
+  background-size: cover;
+  color: #e5c65e;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 260px;
+  background: rgba(5, 5, 5, 0.95);
+  height: 100vh;
+  padding: 30px 20px;
+  position: fixed;
+  border-right: 1px solid #9932cc;
+  overflow-y: auto;
+}
+.sidebar h2 {
+  color: #e5c65e;
+  text-transform: uppercase;
+  border-bottom: 2px solid #9932cc;
+  padding-bottom: 15px;
+}
+.sidebar a {
+  color: #e5c65e;
+  text-decoration: none;
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(153, 50, 204, 0.2);
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  color: #fff;
+  padding-left: 10px;
+}
+.main-content {
+  margin-left: 260px;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+header h1 {
+  font-size: 3em;
+  letter-spacing: 4px;
+}
+.perfume-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.perfume-card {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid #9932cc;
+  width: 280px;
+  padding: 25px;
+  text-align: center;
+  transition: 0.3s;
+}
+.perfume-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(153, 50, 204, 0.3);
+}
+.perfume-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+.order-btn, .submit-btn {
+  background: transparent;
+  color: #e5c65e;
+  border: 1px solid #e5c65e;
+  padding: 12px 25px;
+  width: 100%;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+.order-btn:hover {
+  background: #9932cc;
+  color: #fff;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    left: -260px;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
